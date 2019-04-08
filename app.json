@@ -5,7 +5,7 @@
   "logo": "http://node-js-sample.herokuapp.com/node.svg",
   "keywords": ["node", "express", "twilio", "phone", "webrtc"],
   "image": "heroku/nodejs",
-  "repository": "https://github.com/nash-md/internal-twilio-phone",
+  "repository": "https://github.com/nadirhamid/twilio-phone-ng",
   "addons": ["mongolab:sandbox"],
   "success_url": "/",
   "env": {
