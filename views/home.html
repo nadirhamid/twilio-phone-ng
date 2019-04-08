@@ -102,6 +102,14 @@
                 </div>
 
                 <div>
+                  <input ng-change="updateVolume(volume)" type="range" name="range" ng-model="volume" min="{{settings.volume.min}}"  max="{{settings.volume.max}}">
+                </div>
+
+                <div>
+                  <md-button ng-click="addThirdMember()" class="md-primary">add third member</md-button>
+                </div>
+
+                <div>
                  <md-button ng-click="toggleKeypad()">
                   <md-icon md-svg-src="images/icon-keypad.svg"></md-icon>
                 </md-button>

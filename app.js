@@ -16,6 +16,9 @@ mongoose
   .catch((error) => console.log(error))
 
 const app = express()
+//const expressPublicIp = require('express-public-ip');
+//app.enable('trust proxy');
+//app.use(expressPublicIp());
 
 app.set('port', (process.env.PORT || 5000))
 app.set('session', 'eatyourowndogfood')
@@ -23,16 +26,23 @@ app.use(compression())
 app.enable('trust proxy')
 
 app.use(function (req, res, next) {
+  //console.log("received request ", req);
+  next();
+  return;
+  /*
   if (req.secure) {
     next()
   } else {
     res.redirect('https://' + req.headers.host + req.url)
   }
+  */
 })
 
 app.use('/api/register', require('./router-register.js'))
 app.use('/api/login', require('./router-login.js'))
 app.use('/api/callback/:userId', require('./router-callback.js'))
+app.use('/api/conference', require('./router-conference.js'))
+app.use('/api/voicemail', require('./router-voicemail.js'));
 app.use('/api/phone', require('./router-phone.js'))
 app.use('/api/setup', require('./router-setup.js'))
 app.use('/', require('./router-page.js'))

@@ -17,6 +17,7 @@ router.use(sessionError.callback)
 const phone = require('./controllers/phone.js')
 
 router.route('/outgoing').post(phone.outgoing)
+router.route('/outgoing').get(phone.outgoing)
 router.route('/incoming').post(phone.incoming)
 router.route('/call/track').post(phone.track)
 

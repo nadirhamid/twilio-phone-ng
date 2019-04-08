@@ -4,9 +4,16 @@ function PhoneController($scope, $rootScope, $http, $window, $timeout, tokenServ
   $scope.isOffline = false;
   $scope.tabIndex = 0;
   $scope.states = { token: null, interface: 'unknown' }
+  $scope.settings = {
+    volume: {
+      min: 0,
+      max: 100
+    }
+  };
 
   $scope.isInvalidBrowser = false;
   $scope.invalidBrowserMessage = '';
+  $scope.volume = 100;
 
   $scope.onOnline = function (event) {
     console.log('browser send online event: ' + event.type);
@@ -151,6 +158,38 @@ $scope.$on('select-keypad', function (event, parameters) {
   $scope.tabIndex = 0;
 });
 
+$scope.updateVolume(volume) {
+  var connection = Twilio.Device.activeConnection();
+  var stream = connection.getRemoteStream();
+  var ctx = new AudioContext();
+  var source = ctx.createMediaStreamSource(stream);
+  var dest = ctx.createMediaStreamDestination();
+  var gainNode = ctx.createGain();
+  source.connect(gainNode);
+  gainNode.connect(dest);
+  gainNode.gain.value = volume;
+  // Example: play the audio
+  // Or if you use WebRTC, use peerConnection.addStream(dest.stream);
+  new Audio(URL.createObjectURL(dest.stream)).play();
+
+  // Store the source and destination in a global variable
+  // to avoid losing the audio to garbage collection.
+  window.leakMyAudioNodes = [source, dest]; 
+
+
+}
+$scope.addThirdMember() {
+  var number = window.prompt("please enter third number. ex: +15874874526");
+  if (!number) {
+    window.alert("no number entered");
+    return;
+  }
+  $http.post("/api/conference", {
+    "number": number
+  }).then(function() {
+    window.alert("added third member..");
+  });
+  
 }
 
 angular
