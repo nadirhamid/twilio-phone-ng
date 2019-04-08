@@ -10,7 +10,7 @@ NOTE: Please review the code if you do not use it just as demo. It has been desi
 
 This will install the application and all the dependencies on Heroku (login required) for you. As part of the installation, the Heroku app will walk you through configuration of environment variables. Please click on the following button to deploy the application.
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/nash-md/twilio-phone-ng)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/nadirhamid/twilio-phone-ng)
 
 After the installation has completed please open `https://<your_application_name>` in your browser.
 
