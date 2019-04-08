@@ -12,6 +12,26 @@
     "SESSION_SECRET": {
       "description": "The secret to encrypt our session, should be a large unguessable string",
       "required": "true"
+    },
+    "SENDGRID_API_KEY": {
+      "description": "API key for sendgrid",
+      "required": "true"
+    },
+    "SENDGRID_RECEIVER": {
+      "description": "email address that receives voicemail",
+      "required": "true"
+    },
+    "SENDGRID_RECEIVER_NAME": {
+      "description": "name of person that receives email",
+      "required": "true"
+    },
+    "TWILIO_ACCOUNT_SID": {
+      "description": "account SID from twilio",
+      "required": "true"
+    },
+    "TWILIO_AUTH_TOKEN": {
+      "description": "auth token of twilio",
+      "required": "true"
     }
   }
 }

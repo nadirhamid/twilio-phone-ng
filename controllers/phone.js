@@ -2,6 +2,7 @@ const twilio = require('twilio')
 const VoiceResponse = require('twilio').twiml.VoiceResponse;
 const got = require('got');
 const Call = require('.././models/call.js')
+const client = require('twilio')(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 
 module.exports.incoming = function (req, res) {
   if (!req.body.To || req.body.To.length === 0) {
